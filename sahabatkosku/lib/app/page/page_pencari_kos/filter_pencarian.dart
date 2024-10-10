@@ -9,9 +9,9 @@ class FilterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filter'),
+        title: const Text('Filter'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Get.back();
           },
@@ -28,9 +28,9 @@ class FilterPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min, // Adjust the size to content
                 children: [
-                  Text('Kos untuk?',
+                  const Text('Kos untuk?',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -39,11 +39,11 @@ class FilterPage extends StatelessWidget {
                       genderButton('Campur', Icons.transgender),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Text('Berapa Orang?',
+                  const SizedBox(height: 20),
+                  const Text('Berapa Orang?',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20),
-                  Row(
+                  const SizedBox(height: 20),
+                  const Row(
                     children: [
                       Expanded(
                         child: TextField(
@@ -64,10 +64,10 @@ class FilterPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Text('Pembayaran Kos Tiap?',
+                  const SizedBox(height: 20),
+                  const Text('Pembayaran Kos Tiap?',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Column(
                     children: [
                       paymentOption('Mingguan'),
@@ -75,14 +75,14 @@ class FilterPage extends StatelessWidget {
                       paymentOption('Tahunan'),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                       'Harga                                                             Mulai dari',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
                             labelText: 'Minimal',
@@ -91,8 +91,8 @@ class FilterPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Expanded(
+                      const SizedBox(width: 10),
+                      const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
                             labelText: 'Maksimal',
@@ -101,7 +101,7 @@ class FilterPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       DropdownButton<String>(
                         value: 'Minimal',
                         items:
@@ -131,11 +131,11 @@ class FilterPage extends StatelessWidget {
                   controller.resetFilters();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
+                  backgroundColor: Colors.red,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 142, vertical: 15),
                 ),
-                child: Text('Reset Ulang'),
+                child: const Text('Reset Ulang'),
               ),
             ),
           ),
@@ -151,7 +151,7 @@ class FilterPage extends StatelessWidget {
           controller.selectedGender.value = gender;
         },
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
               color: controller.selectedGender.value == gender
@@ -163,7 +163,7 @@ class FilterPage extends StatelessWidget {
           child: Column(
             children: [
               Icon(icon),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(gender),
             ],
           ),

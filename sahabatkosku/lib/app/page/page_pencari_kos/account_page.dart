@@ -20,27 +20,27 @@ class ProfileView_PencariKos extends StatelessWidget {
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.person, size: 50),
+                      child: const Icon(Icons.person, size: 50),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(controller.userList[0].name,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                         Text(controller.userList[0].role,
-                            style: TextStyle(color: Colors.grey)),
+                            style: const TextStyle(color: Colors.grey)),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () => Get.to(AddPersonalDataView()),
-                      icon: Icon(Icons.edit),
+                      icon: const Icon(Icons.edit),
                     )
                   ],
                 )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TabBarSection(),
           ],
         ),
@@ -50,13 +50,15 @@ class ProfileView_PencariKos extends StatelessWidget {
 }
 
 class TabBarSection extends StatelessWidget {
+  const TabBarSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Column(
         children: [
-          TabBar(
+          const TabBar(
             labelColor: Colors.blue,
             indicatorColor: Colors.blue,
             tabs: [
@@ -87,11 +89,11 @@ class PersonalDataForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.userList.isEmpty) {
-        return Center(child: Text("No Personal Data Available"));
+        return const Center(child: Text("No Personal Data Available"));
       }
       var user = controller.userList[0];
       return ListView(
-        padding: EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         children: [
           PersonalDataField(label: "Jenis Kelamin", value: user.gender),
           PersonalDataField(
@@ -113,7 +115,8 @@ class PersonalDataField extends StatelessWidget {
   final String label;
   final String value;
 
-  PersonalDataField({required this.label, required this.value});
+  const PersonalDataField(
+      {super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +125,8 @@ class PersonalDataField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           Container(
             height: 30,
             color: Colors.grey[300],
@@ -142,30 +145,32 @@ class PersonalDataField extends StatelessWidget {
 }
 
 class LainnyaTab extends StatelessWidget {
+  const LainnyaTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       children: [
         ListTile(
-          leading: Icon(Icons.receipt_long, size: 30),
-          title: Text("Riwayat Transaksi"),
+          leading: const Icon(Icons.receipt_long, size: 30),
+          title: const Text("Riwayat Transaksi"),
           onTap: () {
             // Navigate to transaction history
           },
         ),
-        Divider(),
+        const Divider(),
         ListTile(
-          leading: Icon(Icons.help_outline, size: 30),
-          title: Text("Bantuan"),
+          leading: const Icon(Icons.help_outline, size: 30),
+          title: const Text("Bantuan"),
           onTap: () {
             // Navigate to help section
           },
         ),
-        Divider(),
+        const Divider(),
         ListTile(
-          leading: Icon(Icons.logout, size: 30),
-          title: Text("Keluar dari akun"),
+          leading: const Icon(Icons.logout, size: 30),
+          title: const Text("Keluar dari akun"),
           onTap: () => Get.off(LoginScreen()),
         ),
       ],
@@ -181,9 +186,9 @@ class AddPersonalDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tambah Data Pribadi'),
+        title: const Text('Tambah Data Pribadi'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
       ),
@@ -252,15 +257,15 @@ class AddPersonalDataView extends StatelessWidget {
             ElevatedButton(
               onPressed: controller.saveData,
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // Full width button
-                primary: Colors.blue,
+                minimumSize: const Size(double.infinity, 50),
+                backgroundColor: Colors.blue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Simpan',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],
@@ -278,8 +283,8 @@ class AddPersonalDataView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           TextField(
             decoration: InputDecoration(
               hintText: hint,
@@ -304,8 +309,8 @@ class AddPersonalDataView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               border: OutlineInputBorder(

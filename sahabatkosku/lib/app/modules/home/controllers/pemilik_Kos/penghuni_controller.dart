@@ -58,14 +58,4 @@ class PenghuniController extends GetxController {
     super.onInit();
     fetchPenghuni();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

@@ -4,6 +4,8 @@ import 'package:sahabatkosku/app/modules/home/controllers/login_controller.dart'
 import 'package:sahabatkosku/app/page/root_page/login.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,10 +13,10 @@ class ForgotPasswordScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.off(LoginScreen()),
         ),
-        title: Text(
+        title: const Text(
           'Lupa Password',
           style: TextStyle(color: Colors.black),
         ),
@@ -25,16 +27,16 @@ class ForgotPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Masukkan Nomor telepon yang telah terdaftar dan lakukan verifikasi untuk membuat password baru.',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'No. Telepon *',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
                 hintText: 'Masukkan Nomor telepon',
@@ -44,7 +46,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               ),
               keyboardType: TextInputType.phone,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: SizedBox(
                 width: double.infinity,
@@ -52,12 +54,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Get.off(VerificationMethodScreen()),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue, // Button color
+                    backgroundColor: Colors.blue, // Button color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Pilih metode verifikasi',
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
@@ -72,6 +74,8 @@ class ForgotPasswordScreen extends StatelessWidget {
 }
 
 class VerificationMethodScreen extends StatelessWidget {
+  const VerificationMethodScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,10 +83,10 @@ class VerificationMethodScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.off(ForgotPasswordScreen()),
         ),
-        title: Text(
+        title: const Text(
           'Metode Verifikasi',
           style: TextStyle(color: Colors.black),
         ),
@@ -93,17 +97,17 @@ class VerificationMethodScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Pilih metode verifikasi agar kami dapat mengirimkan kode verifikasi.',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             VerificationMethodButton(
               icon: Icons.sms,
               label: 'Kirim kode verifikasi via SMS',
               onTap: () => Get.off(VerificationScreen()),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             VerificationMethodButton(
               icon: Icons.phone,
               label: 'Kirim kode verifikasi via WhatsApp',
@@ -121,7 +125,8 @@ class VerificationMethodButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  VerificationMethodButton({
+  const VerificationMethodButton({
+    super.key,
     required this.icon,
     required this.label,
     required this.onTap,
@@ -132,7 +137,7 @@ class VerificationMethodButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.grey),
@@ -144,10 +149,10 @@ class VerificationMethodButton extends StatelessWidget {
               size: 30,
               color: Colors.black,
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Text(
               label,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -161,21 +166,23 @@ class VerificationScreen extends StatelessWidget {
   final List<TextEditingController> _codeControllers =
       List.generate(4, (_) => TextEditingController());
 
+  VerificationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Verifikasi Akun ${controller.selectedTab.value}'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Tampilkan dialog konfirmasi
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Apakah Anda yakin ingin kembali?'),
-                    content: Text(
+                    title: const Text('Apakah Anda yakin ingin kembali?'),
+                    content: const Text(
                         'Jika anda kembali, data yang anda masukkan tidak akan tersimpan. Apakah Anda ingin melakukannya?'),
                     actions: [
                       TextButton(
@@ -183,14 +190,14 @@ class VerificationScreen extends StatelessWidget {
                           // Kembali ke halaman sebelumnya
                           Get.off(VerificationMethodScreen());
                         },
-                        child: Text('Ya'),
+                        child: const Text('Ya'),
                       ),
                       TextButton(
                         onPressed: () {
                           // Tutup dialog
                           Navigator.pop(context);
                         },
-                        child: Text('Tidak'),
+                        child: const Text('Tidak'),
                       ),
                     ],
                   );
@@ -203,11 +210,11 @@ class VerificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Mohon isi kolom berikut dengan kode verifikasi yang kami kirimkan ke [metode verifikasi] melalui [cara pengiriman]',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(
@@ -218,12 +225,12 @@ class VerificationScreen extends StatelessWidget {
                     controller: _codeControllers[index],
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
-                    decoration: InputDecoration(),
+                    decoration: const InputDecoration(),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Gabungkan nilai dari semua TextEditingController menjadi satu string
@@ -238,11 +245,11 @@ class VerificationScreen extends StatelessWidget {
                 } else {
                   // Tampilkan pesan error jika kode salah
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Kode verifikasi salah')),
+                    const SnackBar(content: Text('Kode verifikasi salah')),
                   );
                 }
               },
-              child: Text('Verifikasi'),
+              child: const Text('Verifikasi'),
             ),
             // ... bagian lainnya dari Column
             TextButton(
@@ -251,7 +258,7 @@ class VerificationScreen extends StatelessWidget {
                 // Ganti dengan logika pengiriman ulang kode Anda
                 print('Kode verifikasi dikirim ulang');
               },
-              child: Text('Kirim ulang kode verifikasi'),
+              child: const Text('Kirim ulang kode verifikasi'),
             ),
           ],
         ),
@@ -261,6 +268,8 @@ class VerificationScreen extends StatelessWidget {
 }
 
 class UbahPasswordScreen extends StatefulWidget {
+  const UbahPasswordScreen({super.key});
+
   @override
   _UbahPasswordScreenState createState() => _UbahPasswordScreenState();
 }
@@ -274,17 +283,17 @@ class _UbahPasswordScreenState extends State<UbahPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ubah Password'),
+        title: const Text('Ubah Password'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Tampilkan dialog konfirmasi
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Apakah Anda yakin ingin kembali?'),
-                    content: Text(
+                    title: const Text('Apakah Anda yakin ingin kembali?'),
+                    content: const Text(
                         'Jika anda kembali, data yang anda masukkan tidak akan tersimpan. Apakah Anda ingin melakukannya?'),
                     actions: [
                       TextButton(
@@ -292,14 +301,14 @@ class _UbahPasswordScreenState extends State<UbahPasswordScreen> {
                           // Kembali ke halaman sebelumnya
                           Get.off(VerificationMethodScreen());
                         },
-                        child: Text('Ya'),
+                        child: const Text('Ya'),
                       ),
                       TextButton(
                         onPressed: () {
                           // Tutup dialog
                           Navigator.pop(context);
                         },
-                        child: Text('Tidak'),
+                        child: const Text('Tidak'),
                       ),
                     ],
                   );
@@ -329,7 +338,7 @@ class _UbahPasswordScreenState extends State<UbahPasswordScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _confirmPasswordController,
                 decoration: InputDecoration(
@@ -349,7 +358,7 @@ class _UbahPasswordScreenState extends State<UbahPasswordScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -360,14 +369,14 @@ class _UbahPasswordScreenState extends State<UbahPasswordScreen> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue[700],
+                  backgroundColor: Colors.blue[700],
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 150, vertical: 15),
+                      const EdgeInsets.symmetric(horizontal: 140, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Simpan',
                   style: TextStyle(color: Colors.white),
                 ),

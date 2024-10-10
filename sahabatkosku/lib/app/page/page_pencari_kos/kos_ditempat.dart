@@ -10,7 +10,7 @@ class KostCard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Kos Saya'),
+        title: const Text('Kos Saya'),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -20,7 +20,7 @@ class KostCard extends StatelessWidget {
         child: Column(
           children: [
             // TabBar menggantikan TextButton untuk navigasi tab
-            TabBar(
+            const TabBar(
               labelColor: Colors.blue,
               unselectedLabelColor: Colors.black,
               indicatorColor: Colors.blue,
@@ -41,7 +41,7 @@ class KostCard extends StatelessWidget {
                   // Tab pertama: list Kos yang sedang ditempati
                   Obx(() => buildKosList(controller.kostList)),
                   // Tab kedua: konten untuk kos yang pernah ditempati
-                  Center(child: Text('Pernah Ditempati Kos List')),
+                  const Center(child: Text('Pernah Ditempati Kos List')),
                 ],
               ),
             ),
@@ -71,68 +71,70 @@ class KostCard extends StatelessWidget {
                     width: 80,
                     height: 80,
                     color: Colors.grey[300],
-                    child: Icon(Icons.image, size: 50, color: Colors.grey),
+                    child:
+                        const Icon(Icons.image, size: 50, color: Colors.grey),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Gender Badge
                         Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(kos.gender),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         // Nama Kost
                         Text(
                           kos.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         // Lokasi
                         Row(
                           children: [
-                            Icon(Icons.location_on, size: 16),
-                            SizedBox(width: 5),
+                            const Icon(Icons.location_on, size: 16),
+                            const SizedBox(width: 5),
                             Text(kos.location),
                           ],
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         // Fasilitas
                         Text(kos.facilities),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         // Rating dan Status Kamar
                         Row(
                           children: [
-                            Icon(Icons.star, size: 16, color: Colors.amber),
-                            SizedBox(width: 5),
+                            const Icon(Icons.star,
+                                size: 16, color: Colors.amber),
+                            const SizedBox(width: 5),
                             Text('${kos.rating} / 5.0'),
                           ],
                         ),
-                        SizedBox(width: 10),
-                        Text('Sisa 5 kamar'),
+                        const SizedBox(width: 10),
+                        const Text('Sisa 5 kamar'),
                       ],
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   // Harga / Bulan
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Icon(Icons.bookmark_added, size: 24),
-                      SizedBox(height: 84),
+                      const Icon(Icons.bookmark_added, size: 24),
+                      const SizedBox(height: 84),
                       Text(
                         '''${kos.price} 
 / Bulan''',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

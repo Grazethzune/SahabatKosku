@@ -12,9 +12,9 @@ class NotificationSettingsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text("Notifikasi"),
+          title: const Text("Notifikasi"),
           centerTitle: true,
-          bottom: TabBar(
+          bottom: const TabBar(
             labelColor: Colors.blue,
             indicatorColor: Colors.blue,
             tabs: [
@@ -37,9 +37,11 @@ class NotificationSettingsPage extends StatelessWidget {
 }
 
 class NotificationInfoPage extends StatelessWidget {
+  const NotificationInfoPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Notifikasi Info', style: TextStyle(fontSize: 20)),
     );
   }
@@ -47,7 +49,7 @@ class NotificationInfoPage extends StatelessWidget {
 
 class NotificationSettingsBody extends StatelessWidget {
   final FilterController controller;
-  NotificationSettingsBody({required this.controller});
+  const NotificationSettingsBody({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,9 @@ class NotificationSettingsBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Beritahu ada kos baru sesuai keinginan saya"),
+                const Text("Beritahu ada kos baru sesuai keinginan saya"),
                 Obx(() => Switch(
+                      activeTrackColor: Colors.blue,
                       value: controller.isNotificationEnabled.value,
                       onChanged: (value) {
                         controller.isNotificationEnabled.value = value;
@@ -68,7 +71,7 @@ class NotificationSettingsBody extends StatelessWidget {
                     )),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
                 color: Colors.grey[200],
@@ -80,9 +83,9 @@ class NotificationSettingsBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min, // Adjust the size to content
                   children: [
-                    Text('Kos untuk?',
+                    const Text('Kos untuk?',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -91,11 +94,11 @@ class NotificationSettingsBody extends StatelessWidget {
                         genderButton('Campur', Icons.transgender),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Text('Berapa Orang?',
+                    const SizedBox(height: 20),
+                    const Text('Berapa Orang?',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20),
-                    Row(
+                    const SizedBox(height: 20),
+                    const Row(
                       children: [
                         Expanded(
                           child: TextField(
@@ -116,10 +119,10 @@ class NotificationSettingsBody extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Text('Pembayaran Kos Tiap?',
+                    const SizedBox(height: 20),
+                    const Text('Pembayaran Kos Tiap?',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Column(
                       children: [
                         paymentOption('Mingguan'),
@@ -127,14 +130,14 @@ class NotificationSettingsBody extends StatelessWidget {
                         paymentOption('Tahunan'),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                         'Harga                                                    Mulai dari',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: TextField(
                             decoration: InputDecoration(
                               labelText: 'Minimal',
@@ -143,8 +146,8 @@ class NotificationSettingsBody extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
+                        const SizedBox(width: 10),
+                        const Expanded(
                           child: TextField(
                             decoration: InputDecoration(
                               labelText: 'Maksimal',
@@ -153,7 +156,7 @@ class NotificationSettingsBody extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         DropdownButton<String>(
                           value: 'Minimal',
                           items: <String>['Minimal', 'Maksimal']
@@ -184,7 +187,7 @@ class NotificationSettingsBody extends StatelessWidget {
           controller.selectedGender.value = gender;
         },
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
               color: controller.selectedGender.value == gender
@@ -196,7 +199,7 @@ class NotificationSettingsBody extends StatelessWidget {
           child: Column(
             children: [
               Icon(icon),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(gender),
             ],
           ),

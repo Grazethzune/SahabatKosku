@@ -11,9 +11,18 @@ class KwitansiView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Statisik'),
+        title: const Text('Statisik'),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -25,31 +34,31 @@ class KwitansiView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Nama Kos'),
-                SizedBox(height: 10),
+                const Text('Nama Kos'),
+                const SizedBox(height: 10),
                 TextField(
                   decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                    fillColor: Color.fromARGB(255, 235, 233, 233),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    fillColor: const Color.fromARGB(255, 235, 233, 233),
                     filled: true,
-                    prefixIcon: Icon(Icons.home),
+                    prefixIcon: const Icon(Icons.home),
                     hintText: 'Pilih Kos',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
-                Text('Tanggal Transaksi'),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                const Text('Tanggal Transaksi'),
+                const SizedBox(height: 10),
                 TextField(
                   decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                    fillColor: Color.fromARGB(255, 235, 233, 233),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    fillColor: const Color.fromARGB(255, 235, 233, 233),
                     filled: true,
-                    prefixIcon: Icon(Icons.calendar_month),
+                    prefixIcon: const Icon(Icons.calendar_month),
                     hintText: 'Tanggal',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32.0),
@@ -79,7 +88,7 @@ class KwitansiView extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -90,20 +99,20 @@ class KwitansiView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.paid, color: Colors.black),
                       SizedBox(
                         width: 10,
                       ),
-                      const Text(
+                      Text(
                         'Lunas',
                         style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -114,13 +123,13 @@ class KwitansiView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.paid, color: Colors.black),
                       SizedBox(
                         width: 10,
                       ),
-                      const Text(
+                      Text(
                         'Belum Lunas',
                         style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
@@ -130,7 +139,7 @@ class KwitansiView extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: buildPenghuniList(controller.penghuni))
+          Expanded(child: buildPenghuniList(controller.penghuni)),
         ],
       ),
     );
@@ -158,9 +167,10 @@ class KwitansiView extends StatelessWidget {
                         width: 64,
                         height: 100,
                         color: Colors.grey[300],
-                        child: Icon(Icons.image, size: 45, color: Colors.grey),
+                        child: const Icon(Icons.image,
+                            size: 45, color: Colors.grey),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,32 +178,32 @@ class KwitansiView extends StatelessWidget {
                             // Nama Penghuni
                             Text(
                               kos.nama,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               kos.namaKost,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             // Lokasi
                             Row(
                               children: [
                                 Text(
                                     'Lantai ${kos.lantai} - Ruang ${kos.noRuang}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     )),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             // Fasilitas
                             Text(kos.bulananSisa),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             // Rating dan Status Kamar
                           ],
                         ),
@@ -206,30 +216,31 @@ class KwitansiView extends StatelessWidget {
                             children: [
                               Text(
                                 kos.status,
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               IconButton(
                                 onPressed: () => Get.to(()),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             children: [
                               Column(
                                 children: [
                                   Text(kos.bulananSisa),
-                                  SizedBox(height: 10),
-                                  Text('2022-03-09')
+                                  const SizedBox(height: 10),
+                                  const Text('2022-03-09')
                                 ],
                               ),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                 ),
@@ -242,7 +253,7 @@ class KwitansiView extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },
@@ -259,8 +270,8 @@ class KwitansiView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               border: OutlineInputBorder(

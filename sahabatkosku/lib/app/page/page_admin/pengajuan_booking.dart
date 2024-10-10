@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/admin/konfirmasiKos_controller.dart';
 
-class KosConfirmationScreen extends StatelessWidget {
+class PengajuanBookingScreen extends StatelessWidget {
   final KosController controller = Get.put(KosController());
 
   @override
@@ -96,13 +96,38 @@ class KosConfirmationScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  children: [],
+                                  children: [
+                                    Text(controller.ownerName.value,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold)),
+                                    SizedBox(width: 30),
+                                    Text(controller.status_konfirmasi.value,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
                                 ),
-                                Text(controller.ownerName.value,
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold)),
-                                Text(controller.ownerPhone.value),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text('Mulai Sewa'),
+                                    SizedBox(width: 94),
+                                    Text('2024-09-09'),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text('Durasi sewa'),
+                                    SizedBox(width: 94),
+                                    Text('1 Bulan'),
+                                  ],
+                                ),
                               ],
                             ),
                           ],
@@ -111,55 +136,10 @@ class KosConfirmationScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Container(
-                              height: 100,
-                              width: 100,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  topRight: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10),
-                                  bottomRight: Radius.circular(10),
-                                ),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://via.placeholder.com/150'), // Ganti dengan URL gambar
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ), // Replace with your image
                             const SizedBox(width: 16),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 2, horizontal: 6),
-                                      decoration: BoxDecoration(
-                                        color: const Color.fromARGB(
-                                                255, 107, 107, 107)
-                                            .withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Text(
-                                        'Laki-laki',
-                                        style: const TextStyle(
-                                            color: Colors.white, fontSize: 12),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 65,
-                                    ),
-                                    Text(controller.status_konfirmasi.value,
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -170,16 +150,8 @@ class KosConfirmationScreen extends StatelessWidget {
                                 SizedBox(
                                   height: 5,
                                 ),
-                                Row(
-                                  children: [
-                                    const Icon(Icons.location_on),
-                                    Text(controller.location.value),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(controller.facilities.value),
+                                Text(
+                                    '${controller.lantai.value}  -  ${controller.no_Ruang.value}'),
                               ],
                             ),
                           ],
@@ -237,7 +209,6 @@ class KosConfirmationScreen extends StatelessWidget {
                     ),
                   ),
                 )),
-            // Action buttons
           ],
         ),
       ),

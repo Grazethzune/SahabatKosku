@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class Transaksi {
   final String namaBarang;
@@ -18,6 +17,13 @@ class Transaksi {
 // Controller
 class StatistikController extends GetxController {
   var transaksiList = <Transaksi>[].obs;
+  var selectedKos = 'Semua'.obs;
+  var availableRooms = 5.obs;
+  var emptyRooms = 0.obs;
+  var occupiedRooms = 5.obs;
+
+  double get occupancyRate =>
+      (occupiedRooms.value / availableRooms.value) * 100;
 
   void fetchTransaksi() {
     var kosts = [

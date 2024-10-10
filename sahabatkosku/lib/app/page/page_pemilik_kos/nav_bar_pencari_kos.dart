@@ -13,13 +13,15 @@ class LandingPage_PemilikKos extends GetView {
       fontWeight: FontWeight.w500,
       fontSize: 12);
 
-  final TextStyle selectedLabelStyle =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+  final TextStyle selectedLabelStyle = const TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+
+  LandingPage_PemilikKos({super.key});
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
-        data:
-            MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
+        data: MediaQuery.of(context)
+            .copyWith(textScaler: const TextScaler.linear(1.0)),
         child: SizedBox(
           height: 54,
           child: BottomNavigationBar(
@@ -27,8 +29,8 @@ class LandingPage_PemilikKos extends GetView {
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-            unselectedItemColor: Color.fromARGB(255, 156, 151, 151),
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+            unselectedItemColor: const Color.fromARGB(255, 156, 151, 151),
             selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
@@ -39,14 +41,14 @@ class LandingPage_PemilikKos extends GetView {
                     Container(
                       width: 20,
                       color: landingPageController.tabIndex.value == 0
-                          ? Color.fromARGB(255, 0, 0, 0)
+                          ? const Color.fromARGB(255, 0, 0, 0)
                           : null,
                     ),
-                    Icon(Icons.home_filled, size: 20.0),
+                    const Icon(Icons.home_filled, size: 20.0),
                   ],
                 ),
                 label: 'Properti',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Column(
@@ -54,14 +56,14 @@ class LandingPage_PemilikKos extends GetView {
                     Container(
                       width: 20,
                       color: landingPageController.tabIndex.value == 1
-                          ? Color.fromARGB(255, 0, 0, 0)
+                          ? const Color.fromARGB(255, 0, 0, 0)
                           : null,
                     ),
-                    Icon(Icons.people, size: 20.0),
+                    const Icon(Icons.people, size: 20.0),
                   ],
                 ),
                 label: 'Penghuni',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Column(
@@ -69,14 +71,14 @@ class LandingPage_PemilikKos extends GetView {
                     Container(
                       width: 20,
                       color: landingPageController.tabIndex.value == 2
-                          ? Color.fromARGB(255, 0, 0, 0)
-                          : Color.fromARGB(255, 255, 255, 255),
+                          ? const Color.fromARGB(255, 0, 0, 0)
+                          : const Color.fromARGB(255, 255, 255, 255),
                     ),
-                    Icon(Icons.auto_graph, size: 20.0),
+                    const Icon(Icons.auto_graph, size: 20.0),
                   ],
                 ),
                 label: 'Statistik',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Column(
@@ -84,14 +86,14 @@ class LandingPage_PemilikKos extends GetView {
                     Container(
                       width: 20,
                       color: landingPageController.tabIndex.value == 2
-                          ? Color.fromARGB(255, 0, 0, 0)
-                          : Color.fromARGB(255, 255, 255, 255),
+                          ? const Color.fromARGB(255, 0, 0, 0)
+                          : const Color.fromARGB(255, 255, 255, 255),
                     ),
-                    Icon(Icons.receipt, size: 20.0),
+                    const Icon(Icons.receipt, size: 20.0),
                   ],
                 ),
                 label: 'Kwitansi',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Column(
@@ -99,14 +101,14 @@ class LandingPage_PemilikKos extends GetView {
                     Container(
                       width: 20,
                       color: landingPageController.tabIndex.value == 2
-                          ? Color.fromARGB(255, 0, 0, 0)
-                          : Color.fromARGB(255, 255, 255, 255),
+                          ? const Color.fromARGB(255, 0, 0, 0)
+                          : const Color.fromARGB(255, 255, 255, 255),
                     ),
-                    Icon(Icons.account_circle, size: 20.0),
+                    const Icon(Icons.account_circle, size: 20.0),
                   ],
                 ),
                 label: 'Akun',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
             ],
           ),

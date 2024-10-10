@@ -178,7 +178,7 @@ class RegisterScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        minimumSize: Size(130, 40), // Adjust the size of the button
+        minimumSize: const Size(130, 40), // Adjust the size of the button
       ),
       child: Text(
         label,

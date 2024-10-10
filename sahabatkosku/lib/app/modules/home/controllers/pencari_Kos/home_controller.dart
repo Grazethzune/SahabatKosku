@@ -80,14 +80,4 @@ class HomeController extends GetxController {
     super.onInit();
     fetchKosts();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

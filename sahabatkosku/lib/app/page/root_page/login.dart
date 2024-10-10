@@ -8,6 +8,8 @@ import 'package:sahabatkosku/app/page/root_page/lupa_pasword.dart';
 import 'package:sahabatkosku/app/page/root_page/register.dart';
 
 class LoginScreen extends GetView<LoginController> {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,9 @@ class LoginScreen extends GetView<LoginController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Image placeholder (use your own image asset here)
-              Image.asset('assets/images/Image.png', height: 150),
+              Image.asset(
+                  'assets/images/SahabatKosku Cari & Manajemen kos jadi mudah.png',
+                  height: 60),
 
               const SizedBox(height: 20),
 
@@ -45,11 +49,11 @@ class LoginScreen extends GetView<LoginController> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             _buildTabButton('Pencari Kos', controller),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             _buildTabButton('Pemilik Kos', controller),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             _buildTabButton('Admin', controller),
@@ -65,7 +69,7 @@ class LoginScreen extends GetView<LoginController> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         labelText: 'Alamat Email',
-                        prefixIcon: Icon(Icons.email),
+                        prefixIcon: const Icon(Icons.email),
                       ),
                     ),
 
@@ -79,8 +83,8 @@ class LoginScreen extends GetView<LoginController> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         labelText: 'Password',
-                        prefixIcon: Icon(Icons.lock),
-                        suffixIcon: Icon(Icons.visibility),
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: const Icon(Icons.visibility),
                       ),
                     ),
 
@@ -99,7 +103,7 @@ class LoginScreen extends GetView<LoginController> {
                                 onPressed: () => Get.to(RegisterScreen()),
                                 child: const Text('Belum punya akun ?'),
                               )
-                            : Text('')),
+                            : const Text('')),
                       ],
                     ),
 
@@ -119,9 +123,9 @@ class LoginScreen extends GetView<LoginController> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue, // Button color
+                        backgroundColor: Colors.blue, // Button color
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 122, vertical: 15),
+                            horizontal: 120, vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -152,7 +156,7 @@ class LoginScreen extends GetView<LoginController> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue[700],
+                        backgroundColor: Colors.blue[700],
                         padding: const EdgeInsets.symmetric(
                             horizontal: 40, vertical: 15),
                         shape: RoundedRectangleBorder(

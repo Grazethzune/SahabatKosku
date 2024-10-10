@@ -11,7 +11,7 @@ class PenghuniView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Penghuni'),
+        title: const Text('Penghuni'),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -21,7 +21,7 @@ class PenghuniView extends StatelessWidget {
         child: Column(
           children: [
             // TabBar menggantikan TextButton untuk navigasi tab
-            TabBar(
+            const TabBar(
               labelColor: Colors.blue,
               unselectedLabelColor: Colors.black,
               indicatorColor: Colors.blue,
@@ -39,10 +39,71 @@ class PenghuniView extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue, // Button color
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 15),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.schedule, color: Colors.white),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Kirim Pesan Tagihan Otomatis',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        // Row untuk mengatur agar icon filter sejajar dengan TextField
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 270,
+                            height: 40,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0, vertical: 8.0),
+                                fillColor:
+                                    const Color.fromARGB(255, 235, 233, 233),
+                                filled: true,
+                                prefixIcon: const Icon(Icons.search),
+                                hintText: 'Nama Penghuni',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            color: Colors.black,
+                            icon: const Icon(Icons.filter_alt),
+                            onPressed: () => Get.to(()),
+                          ),
+                        ],
+                      ),
+                      Obx(() => buildPenghuniList(controller.penghuni)),
+                    ],
+                  ),
                   // Tab pertama: list Kos yang sedang ditempati
-                  Obx(() => buildPenghuniList(controller.penghuni)),
+
                   // Tab kedua: konten untuk kos yang pernah ditempati
-                  Center(child: Text('Pernah Ditempati Kos List')),
+                  const Center(child: Text('Pernah Ditempati Kos List')),
                 ],
               ),
             ),
@@ -52,181 +113,126 @@ class PenghuniView extends StatelessWidget {
     );
   }
 
-  Widget buildPenghuniList(List<Penghuni> kostList) {
+  Widget buildPenghuniList(List<Penghuni> penghuniList) {
     return ListView.builder(
-      itemCount: kostList.length,
+      shrinkWrap: true, // Tambahkan ini agar ListView bisa scroll
+      itemCount: penghuniList.length,
       itemBuilder: (context, index) {
-        var kos = kostList[index];
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Button color
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.schedule, color: Colors.white),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    const Text(
-                      'Kirim Pesan Tagihan Otomatis',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Row(
-              // Row untuk mengatur agar icon filter sejajar dengan TextField
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 305,
-                  height: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      fillColor: Color.fromARGB(255, 235, 233, 233),
-                      filled: true,
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'Nama Penghuni',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                    ),
-                  ),
-                ),
-                IconButton(
-                  color: Colors.black,
-                  icon: Icon(Icons.filter_alt),
-                  onPressed: () => Get.to(()),
-                ),
-              ],
-            ),
-            Padding(
+        var penghuni = penghuniList[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 2,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      // Placeholder untuk gambar
-                      Container(
-                        width: 64,
-                        height: 100,
-                        color: Colors.grey[300],
-                        child: Icon(Icons.image, size: 45, color: Colors.grey),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                children: [
+                  // Placeholder untuk gambar
+                  Container(
+                    width: 64,
+                    height: 100,
+                    color: Colors.grey[300],
+                    child:
+                        const Icon(Icons.image, size: 45, color: Colors.grey),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Nama Penghuni
+                        Text(
+                          penghuni.nama,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          penghuni.namaKost,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        // Lokasi
+                        Row(
                           children: [
-                            // Nama Penghuni
                             Text(
-                              kos.nama,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              kos.namaKost,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            // Lokasi
-                            Row(
-                              children: [
-                                Text(
-                                    'Lantai ${kos.lantai} - Ruang ${kos.noRuang}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    )),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            // Fasilitas
-                            Text(kos.bulananSisa),
-                            SizedBox(height: 5),
-                            // Rating dan Status Kamar
+                                'Lantai ${penghuni.lantai} - Ruang ${penghuni.noRuang}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                )),
                           ],
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      // Harga / Bulan
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        const SizedBox(height: 10),
+                        // Sisa Bulanan
+                        Text(penghuni.bulananSisa),
+                        const SizedBox(height: 5),
+                        // Status
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  // Status
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                '${kos.status}',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(width: 10),
-                              IconButton(
-                                onPressed: () => Get.to(EditPersonalDataView()),
-                                icon: Icon(
-                                  Icons.edit,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            penghuni.status,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
+                          const SizedBox(width: 10),
                           IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              primary: const Color.fromARGB(255, 44, 243, 33),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 6),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.phone,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "Ajukan Sewa",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15),
-                                ),
-                              ],
+                            onPressed: () => Get.to(EditPersonalDataView()),
+                            icon: const Icon(
+                              Icons.edit,
                             ),
                           ),
                         ],
                       ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 44, 243, 33),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 6),
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "Ajukan Sewa",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                ),
+                ],
               ),
-            )
-          ],
+            ),
+          ),
         );
       },
     );
@@ -248,11 +254,11 @@ class PenghuniView extends StatelessWidget {
                   height: 40,
                   child: TextField(
                     decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      fillColor: Color.fromARGB(255, 235, 233, 233),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0),
+                      fillColor: const Color.fromARGB(255, 235, 233, 233),
                       filled: true,
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       hintText: 'Nama Penghuni',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0),
@@ -277,9 +283,10 @@ class PenghuniView extends StatelessWidget {
                         width: 64,
                         height: 100,
                         color: Colors.grey[300],
-                        child: Icon(Icons.image, size: 45, color: Colors.grey),
+                        child: const Icon(Icons.image,
+                            size: 45, color: Colors.grey),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,37 +294,37 @@ class PenghuniView extends StatelessWidget {
                             // Nama Penghuni
                             Text(
                               kos.nama,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               kos.namaKost,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             // Lokasi
                             Row(
                               children: [
                                 Text(
                                     'Lantai ${kos.lantai} - Ruang ${kos.noRuang}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     )),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             // Fasilitas
                             Text(kos.bulananSisa),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             // Rating dan Status Kamar
                           ],
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       // Harga / Bulan
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -325,13 +332,14 @@ class PenghuniView extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '${kos.status}',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                kos.status,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                 ),
                               ),
@@ -339,7 +347,7 @@ class PenghuniView extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.delete,
                               color: Colors.red,
                             ),
@@ -347,11 +355,12 @@ class PenghuniView extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              primary: const Color.fromARGB(255, 44, 243, 33),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 44, 243, 33),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 6),
                             ),
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Icon(
                                   Icons.phone,
@@ -389,9 +398,9 @@ class EditPersonalDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Penghuni'),
+        title: const Text('Edit Penghuni'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
       ),
@@ -436,15 +445,15 @@ class EditPersonalDataView extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // Full width button
-                primary: Colors.blue,
+                minimumSize: const Size(double.infinity, 50),
+                backgroundColor: Colors.blue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Simpan',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],
@@ -462,8 +471,8 @@ class EditPersonalDataView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           TextField(
             decoration: InputDecoration(
               hintText: hint,
@@ -488,8 +497,8 @@ class EditPersonalDataView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
-          SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontSize: 16)),
+          const SizedBox(height: 4),
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               border: OutlineInputBorder(

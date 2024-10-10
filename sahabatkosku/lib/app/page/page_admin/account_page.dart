@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sahabatkosku/app/modules/home/controllers/pemilik_Kos/user_controller.dart';
+import 'package:sahabatkosku/app/modules/home/controllers/admin/user_controller.dart';
 import 'package:sahabatkosku/app/page/root_page/login.dart';
 
-class ProfileView_PemilikKos extends StatelessWidget {
-  final UserController_PemilikKos controller =
-      Get.put(UserController_PemilikKos());
+class ProfileView_Admin extends StatelessWidget {
+  final UserController_Admin controller = Get.put(UserController_Admin());
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +81,7 @@ class TabBarSection extends StatelessWidget {
 }
 
 class PersonalDataForm extends StatelessWidget {
-  final UserController_PemilikKos controller =
-      Get.find<UserController_PemilikKos>();
+  final UserController_Admin controller = Get.find<UserController_Admin>();
 
   @override
   Widget build(BuildContext context) {
@@ -145,14 +143,6 @@ class LainnyaTab extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       children: [
         ListTile(
-          leading: const Icon(Icons.help_outline, size: 30),
-          title: const Text("Bantuan"),
-          onTap: () {
-            // Navigate to help section
-          },
-        ),
-        const Divider(),
-        ListTile(
           leading: const Icon(Icons.logout, size: 30),
           title: const Text("Keluar dari akun"),
           onTap: () => Get.off(LoginScreen()),
@@ -163,8 +153,7 @@ class LainnyaTab extends StatelessWidget {
 }
 
 class AddPersonalDataView extends StatelessWidget {
-  final UserController_PemilikKos controller =
-      Get.put(UserController_PemilikKos());
+  final UserController_Admin controller = Get.put(UserController_Admin());
 
   @override
   Widget build(BuildContext context) {
