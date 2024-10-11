@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pemilik_Kos/statistik_controller.dart';
+import 'package:sahabatkosku/app/page/page_pemilik_kos/tambah_edit_pengeluaran_page.dart';
 
 // View
 class StatistikView extends StatelessWidget {
@@ -118,7 +119,7 @@ class StatistikView extends StatelessWidget {
                         child: FloatingActionButton(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30)),
-                          onPressed: () {},
+                          onPressed: () => Get.to(TambahPengeluaranPage()),
                           backgroundColor: Colors.blue,
                           child: const Icon(
                             Icons.add,
@@ -206,10 +207,7 @@ class StatistikView extends StatelessWidget {
                       Row(
                         children: [
                           IconButton(
-                            onPressed: () {
-                              // Action for editing transaction
-                              // Get.to(EditTransaksiView(transaksi));
-                            },
+                            onPressed: () => Get.to(EditPengeluaranPage()),
                             icon: const Icon(Icons.edit),
                           ),
                           IconButton(

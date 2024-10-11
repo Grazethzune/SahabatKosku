@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pencari_Kos/user_controller.dart';
+import 'package:sahabatkosku/app/page/page_pencari_kos/riwayat_transaksi.dart';
 import 'package:sahabatkosku/app/page/root_page/login.dart';
 
 class ProfileView_PencariKos extends StatelessWidget {
@@ -155,9 +156,7 @@ class LainnyaTab extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.receipt_long, size: 30),
           title: const Text("Riwayat Transaksi"),
-          onTap: () {
-            // Navigate to transaction history
-          },
+          onTap: () => Get.to(riwayatTransaksiView()),
         ),
         const Divider(),
         ListTile(
@@ -196,6 +195,36 @@ class AddPersonalDataView extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            CircleAvatar(
+              radius: 40,
+              backgroundColor: Colors.grey[300],
+              child: const Icon(Icons.person, size: 50),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                maximumSize: Size(120, 40),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              ),
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.edit,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "Ubah Foto",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: ListView(
                 children: [

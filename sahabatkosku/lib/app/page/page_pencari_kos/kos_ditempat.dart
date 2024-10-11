@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pencari_Kos/home_controller.dart';
+import 'package:sahabatkosku/app/page/page_pencari_kos/cari_kos.dart';
 
 class KostCard extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -39,7 +40,9 @@ class KostCard extends StatelessWidget {
               child: TabBarView(
                 children: [
                   // Tab pertama: list Kos yang sedang ditempati
-                  Obx(() => buildKosList(controller.kostList)),
+                  Obx(() => GestureDetector(
+                      onTap: () => Get.to(KosDetailPage()),
+                      child: buildKosList(controller.kostList))),
                   // Tab kedua: konten untuk kos yang pernah ditempati
                   const Center(child: Text('Pernah Ditempati Kos List')),
                 ],

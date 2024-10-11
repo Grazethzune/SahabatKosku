@@ -58,4 +58,12 @@ class PenghuniController extends GetxController {
     super.onInit();
     fetchPenghuni();
   }
+
+  void rejectKos() {
+    // Logic for rejecting kos
+  }
+
+  void acceptKos() {
+    // Logic for accepting kos
+  }
 }

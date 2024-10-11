@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pencari_Kos/home_controller.dart';
 import 'package:sahabatkosku/app/page/page_pencari_kos/filter_pencarian.dart';
+import 'package:sahabatkosku/app/page/page_pencari_kos/metode_pembayaran.dart';
 
 class KostView extends StatelessWidget {
   const KostView({super.key});
@@ -395,7 +396,7 @@ class KosDetailPage extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(MetodePembayaranScreen()),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,

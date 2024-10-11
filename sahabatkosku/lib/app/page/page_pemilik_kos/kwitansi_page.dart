@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sahabatkosku/app/modules/home/controllers/pemilik_Kos/kwitansi_controller.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pemilik_Kos/penghuni_controller.dart';
+import 'package:sahabatkosku/app/page/page_pemilik_kos/tambah_edit_kwitansi.dart';
 
 // Model Transaksi
 
@@ -13,7 +15,7 @@ class KwitansiView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        onPressed: () {},
+        onPressed: () => Get.to(TambahKwitansiPage()),
         backgroundColor: Colors.blue,
         child: const Icon(
           Icons.add,
@@ -22,7 +24,7 @@ class KwitansiView extends StatelessWidget {
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Statisik'),
+        title: const Text('Kwitansi'),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -139,7 +141,11 @@ class KwitansiView extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: buildPenghuniList(controller.penghuni)),
+          Expanded(
+            child: Obx(() => GestureDetector(
+                onTap: () => Get.to(detailKwitansiScreen()),
+                child: buildPenghuniList(controller.penghuni))),
+          ),
         ],
       ),
     );
@@ -221,7 +227,7 @@ class KwitansiView extends StatelessWidget {
                               ),
                               const SizedBox(width: 10),
                               IconButton(
-                                onPressed: () => Get.to(()),
+                                onPressed: () => Get.to(editKwitansiPage()),
                                 icon: const Icon(
                                   Icons.edit,
                                 ),
@@ -290,5 +296,101 @@ class KwitansiView extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class detailKwitansiScreen extends StatelessWidget {
+  final KwitansiController controller = Get.put(KwitansiController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Detail Kwitansi"),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          titleTextStyle: const TextStyle(color: Colors.black, fontSize: 18),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        const Text(
+                          "Tanggal Kwitansi Dibuat",
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          controller.tanggalKwitansi.toString(),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Status Pembayaran",
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          controller.statusPembayaran.value,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 500,
+                  child: Card(
+                    child: Center(
+                      child: Text(
+                        "Foto Kwitansi",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue, // Button color
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 100, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text(
+                        'Simpan Gambar',
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.share),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
