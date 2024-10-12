@@ -14,6 +14,7 @@ class KwitansiController extends GetxController {
   var statusPembayaran = 'Lunas'.obs;
   var reminder = ''.obs;
   var tanggalKwitansi = DateTime.parse('2024-10-30').obs;
+  var selectedTab = 'Pencari Kos'.obs;
 
   List<String> kosList = ['Kos A', 'Kos B', 'Kos C'];
   List<String> lantaiList = ['Lantai 1', 'Lantai 2', 'Lantai 3'];
@@ -26,4 +27,8 @@ class KwitansiController extends GetxController {
     '2 H Sebelumnya',
     '3 H Sebelumnya'
   ];
+
+  void selectTab(String tab) {
+    selectedTab.value = tab;
+  }
 }

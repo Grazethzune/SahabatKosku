@@ -131,11 +131,14 @@ class FilterPage extends StatelessWidget {
                   controller.resetFilters();
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  side: const BorderSide(color: Colors.red),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 142, vertical: 15),
                 ),
-                child: const Text('Reset Ulang'),
+                child: const Text(
+                  'Reset Ulang',
+                  style: TextStyle(color: Colors.red),
+                ),
               ),
             ),
           ),

@@ -22,7 +22,7 @@ class Penghuni {
 // Controller
 class PenghuniController extends GetxController {
   var penghuni = <Penghuni>[].obs;
-
+  var selectedTab = 0.obs;
   var nama = ''.obs;
   var namaKos = ''.obs;
   var lantai = ''.obs;
@@ -51,6 +51,10 @@ class PenghuniController extends GetxController {
   // Fungsi untuk mengirim pesan tagihan
   void kirimPesanTagihan() {
     // Implementasi logika mengirim pesan
+  }
+  // Method to select a tab
+  void selectTab(int tab) {
+    selectedTab.value = tab;
   }
 
   @override

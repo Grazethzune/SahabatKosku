@@ -74,70 +74,84 @@ class KwitansiView extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 215, 215, 215),
-                    // Button color
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: () {
+                      controller.selectedTab.value = 0;
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: controller.selectedTab.value == 0
+                          ? const Color.fromARGB(255, 158, 158, 158)
+                          : Colors.grey[300],
+                      // Button color
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    'Semua',
-                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    child: const Text(
+                      'Semua',
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    // Button color
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.paid, color: Colors.black),
-                      SizedBox(
-                        width: 10,
+                Obx(() => ElevatedButton(
+                      onPressed: () {
+                        controller.selectedTab.value = 1;
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: controller.selectedTab.value == 1
+                            ? const Color.fromARGB(255, 158, 158, 158)
+                            : Colors.grey[300],
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      Text(
-                        'Lunas',
-                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.paid, color: Colors.black),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Lunas',
+                            style: TextStyle(color: Colors.black, fontSize: 15),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    )),
                 const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    // Button color
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.paid, color: Colors.black),
-                      SizedBox(
-                        width: 10,
+                Obx(() => ElevatedButton(
+                      onPressed: () {
+                        controller.selectedTab.value = 2;
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: controller.selectedTab.value == 2
+                            ? const Color.fromARGB(255, 158, 158, 158)
+                            : Colors.grey[300],
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      Text(
-                        'Belum Lunas',
-                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.paid, color: Colors.black),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Belum Lunas',
+                            style: TextStyle(color: Colors.black, fontSize: 15),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    )),
               ],
             ),
           ),

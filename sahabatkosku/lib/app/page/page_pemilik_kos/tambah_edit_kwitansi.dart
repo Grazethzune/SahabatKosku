@@ -285,11 +285,19 @@ class TambahKwitansiPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[700],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
+                  ),
                   onPressed: () {
                     // Logika untuk membuat kwitansi
                     print('Kwitansi dibuat');
                   },
-                  child: Text('Buat Kwitansi'),
+                  child: Text(
+                    'Buat Kwitansi',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -581,11 +589,16 @@ class editKwitansiPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Logika untuk membuat kwitansi
-                    print('Kwitansi dibuat');
-                  },
-                  child: Text('Buat Kwitansi'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[700],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'Simpan Kwitansi',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],

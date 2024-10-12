@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sahabatkosku/app/modules/home/controllers/pemilik_Kos/penghuni_controller.dart';
+import 'package:sahabatkosku/app/page/page_pemilik_kos/tagihan_otomatis_page.dart';
 
 class PenghuniView extends StatelessWidget {
   final PenghuniController controller = Get.put(PenghuniController());
@@ -44,7 +45,7 @@ class PenghuniView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => Get.to(tagihOtomatisScreen()),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue, // Button color
                             padding: const EdgeInsets.symmetric(
